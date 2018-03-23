@@ -78,18 +78,18 @@ function movieThis() {
 
   request(
     "http://www.omdbapi.com/?t=" + value + "&y=&plot=short&apikey=trilogy",
-    function(error, body) {
+    function(error, response, body) {
       if (!error) {
+        var data = JSON.parse(body);
         console.log(" ");
-        console.log("Title: " + body.Title);
-        console.log("Year: " + body.Year);
-        console.log("IMDb Rating: " + body.imdbRating);
-        console.log("Country: " + body.Country);
-        console.log("Language: " + body.Language);
-        console.log("Plot: " + body.Plot);
-        console.log("Actors: " + body.Actors);
-        console.log("Rotten Tomatoes Rating: " + body.tomatoRating);
-        console.log("Rotten Tomatoes URL: " + body.tomatoURL);
+        console.log("Title: " + data.Title);
+        console.log("Year: " + data.Year);
+        console.log("IMDb Rating: " + data.imdbRating);
+        console.log("Rotten Tomatoes Rating: " + data.Ratings[1].Value)
+        console.log("Country: " + data.Country);
+        console.log("Language: " + data.Language);
+        console.log("Plot: " + data.Plot);
+        console.log("Actors: " + data.Actors);
         console.log(" ");
       }
     }
